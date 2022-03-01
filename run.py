@@ -2,10 +2,11 @@ import random
 import time
  
 # Variables for the player and computer game board
-PLAYER_BOARD = [[" "]] * 10 for i in range(10)]
-COMPUTER_BOARD = [[" "]] * 10 for i in range(10)]
-PLAYER_GUESS = [[" "]] * 10 for i in range(10)]
-COMPUTER_GUESS = [[" "]] * 10 for i in range(10)]
+
+PLAYER_BOARD = [[" "] * 8 for i in range(8)]
+COMPUTER_BOARD = [[" "] * 8 for i in range(8)]
+PLAYER_GUESS_BOARD = [[" "] * 8 for i in range(8)]
+COMPUTER_GUESS_BOARD = [[" "] * 8 for i in range(8)]
 
 # Converting strings into integers
 LETTER_TRANSLATE = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7}
