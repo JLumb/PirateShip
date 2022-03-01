@@ -34,8 +34,12 @@ and more importantly their name will become legend\n""")
     print("\033[1;31;48mRule #2: All ships must be placed within the board")
     print("\033[1;31;48mRule #3: The first to hit the enemy ships 15 times wins\n")
     print(SEPERATOR)
-    
 
+    print("\033[1;32;48mHOW TO PLAY:\n")
+    print("\033[1;31;48mPirateShips is a turn based game vs AI:")
+    print("\033[1;31;48mYou will pick a co-ordinate on the game board example: A1.")
+    print("\033[1;31;48mYou will then see a message of hit or miss.")
+    print("\033[1;31;48mThe first to hit the enemy fleet 18 times wins.")
 
 
 
