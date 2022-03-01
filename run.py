@@ -16,11 +16,8 @@ SEPERATOR = "~" * 80
 
 # The opening message that a user will see when PirateShips runs
 def welcome_message():
-    """
-    Ahoy Matey, welcome to PirateShips defeat your enemies
-    make away with the treasures!
-    """
-
+    print("Ahoy Matey, welcome to PirateShips defeat your enemies make way with the treasures!")
+    print('\x1b[6;30;42m' + 'Success!' + '\x1b[0m')
 
 
 
