@@ -109,17 +109,10 @@ class Pirateship:
             while y_column not in "ABCDEFGH":
                 print("Please enter a value from ABCDEFGH")
                 y_column = input("Enter the Column:")
-            return int(x_row) - 1, PlayBoard.convert()[y_column]
+            return int(x_row) - 1, PlayBoard.letter_converter(self)[y_column]
         except ValueError and KeyError:
             print("Please enter your guess")
             return self.user_guess()
-
-
-
-
-
-
-
 
 
 welcome_message()
