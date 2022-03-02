@@ -104,7 +104,16 @@ class Pirateship:
             while x_row not in "12345678":
                 print("Please enter number between 1 and 8")
                 x_row = input("Enter the Row: ")
+
             y_column = input("Enter the Column: ").upper()
+            while y_column not in "ABCDEFGH":
+                print("Please enter a value from ABCDEFGH")
+                y_column = input("Enter the Column:")
+            return int(x_row) - 1, PlayBoard.convert()[y_column]
+        except ValueError and KeyError:
+            print("Please enter your guess")
+            return self.user_guess()
+
 
 
 
