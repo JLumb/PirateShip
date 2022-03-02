@@ -82,10 +82,20 @@ class PlayBoard:
             print("%d|%s" % (row_number, "|".join(row)))
             row_number += 1
 
-# creating a variable for the ship sizes
-SHIPS = {2, 3, 4, 4, 5}
 
+class Pirateship:
+    """class to take user input and run the pirateship game functions"""
+    def __init__(self, board):
+        self.board = board
 
+    def ships(self):
+        """creating the ships for the board and checking if space taken when placing"""
+        for i in range(5):
+            self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
+            while self.board[self.x_row][self.y_column] == "X":
+                self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
+            self.board[self.x_row][self.y_column] = "X"
+        return self.board
 
 
 
