@@ -59,10 +59,16 @@ def verify_username(username):
         return True
 
 
-
-
-
-
+def print_board(board):
+    """
+    this function prints the game board out throughtout the project
+    """
+    print"A B C D E F G H"
+    print"~ ~ ~ ~ ~ ~ ~ ~"
+    row_number = 1
+    for row in board:
+        print("%d|%s" % (row_number, "|".join(row)))
+        row_number += 1
 
 
 
