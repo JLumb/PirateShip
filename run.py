@@ -1,9 +1,4 @@
 import random
-import time
- 
- 
-# Converting strings into integers
-LETTER_TRANSLATE = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7}
 
 # Seperator creates a line break
 SEPERATOR = "\033[1;35;48m~" * 80
@@ -32,8 +27,10 @@ and more importantly their name will become legend\n""")
     print("\033[1;32;48mHOW TO PLAY:\n")
     print("\033[1;31;48mPirateShips is a turn based game vs AI:")
     print("\033[1;31;48mYou will pick a co-ordinate on the game board example: A1.")
-    print("\033[1;31;48mYou will then see a message of hit or miss.")
+    print("""\033[1;31;48mYou will then see a message of hit or miss,
+    on the board a x will show for hit and a ~ for miss!.""")
     print("\033[1;31;48mThe first to blow all the enemy ships out of the water wins.\n")
+
 
 def username_input():
     """Takes user input to create a username as a variable that can be used
@@ -44,6 +41,7 @@ def username_input():
         if verify_username(username):
             break
     print(f"\033[1;31;48mCPT'N {username} WILL STRIKE FEAR INTO THE HEART OF THEIR FOES")
+    
 
 def verify_username(username):
     """
@@ -59,16 +57,27 @@ def verify_username(username):
         return True
 
 
-def print_board(board):
+class PlayBoard:
     """
-    this function prints the game board out throughtout the project
+    Class to initiate the game board
     """
-    print("A B C D E F G H")
-    print("~ ~ ~ ~ ~ ~ ~ ~")
-    row_number = 1
-    for row in board:
-        print("%d|%s" % (row_number, "|".join(row)))
-        row_number += 1
+    def __init__(self, board):
+        self.board = board
+
+    def print_board(self):
+        """
+        this function prints the game board out throughtout the project
+        """
+        print("A B C D E F G H")
+        print("~ ~ ~ ~ ~ ~ ~ ~")
+        row_number = 1
+        for row in self.board:
+            print("%d|%s" % (row_number, "|".join(row)))
+            row_number += 1
+
+# creating a variable for the ship sizes
+SHIPS = {2, 3, 4, 4, 5}
+
 
 
 
