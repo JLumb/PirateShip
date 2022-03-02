@@ -97,6 +97,16 @@ class Pirateship:
             self.board[self.x_row][self.y_column] = "X"
         return self.board
 
+    def user_guess(self):
+        """takes the users guess and checks to see if it is a valid input"""
+        try:
+            x_row = input("Enter the Row:")
+            while x_row not in "12345678":
+                print("Please enter number between 1 and 8")
+                x_row = input("Enter the Row: ")
+            y_column = input("Enter the Column: ").upper()
+
+
 
 
 
