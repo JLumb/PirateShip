@@ -3,6 +3,8 @@ import random
 # Seperator creates a line break
 SEPERATOR = "\033[1;35;48m~" * 80
 
+
+
 # The opening message that a user will see when PirateShips runs
 
 
@@ -63,6 +65,11 @@ class PlayBoard:
     """
     def __init__(self, board):
         self.board = board
+
+    def letter_converter(self):
+        """converts the strings into integers so that the computer can read"""
+        convert = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7}
+        return convert
 
     def print_board(self):
         """
