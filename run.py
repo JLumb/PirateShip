@@ -111,23 +111,24 @@ class Pirateship:
                 y_column = input("Enter the Column:")
             return int(x_row) - 1, PlayBoard.letter_converter(self)[y_column]
         except ValueError and KeyError:
-            print("Invalid Input")
+            print("Not a valid input")
             return self.user_guess()
 
     def hit_count(self):
-        """function used to track how many hits a player has made"""
-        hits = 0
+        """counts the amount of ships hit so we can
+        calculate when to game is over"""
+        hit_ships = 0
         for row in self.board:
             for column in row:
                 if column == "X":
-                    hits += 1
-        print(f"You have hit {hits} out of 5")
-        return hits
+                    hit_ships += 1
+        return hit_ships
 
 
 def start_game():
-    """this function will be called to start and run the game of
-        PirateShips this includes counting turns left(cannon balls remaining)"""
+    """this function will be called to start and 
+        run the game of PirateShips this includes 
+        counting turns left(cannon balls remaining)"""
     computer_board = PlayBoard([[" "] * 8 for i in range(8)])
     guess_board = PlayBoard([[" "] * 8 for i in range(8)])
     Pirateship.ships(computer_board)
