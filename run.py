@@ -122,20 +122,22 @@ class Pirateship:
                     hits += 1
         return hits
 
-    def start_game(self):
-        """this function will be called to start and run the game of
+def start_game():
+    """this function will be called to start and run the game of
         PirateShips this includes counting turns left(cannon balls remaining)"""
-        computer_board = PlayBoard([[" "] * 10 for i in range(10)])
-        guess_board = PlayBoard([[" "] * 10 for i in range(10)])
-        Pirateship.ships(computer_board)
-        cannon_balls_left = 15
-        while cannon_balls_left > 0:
-            PlayBoard.print_board(guess_board)
-            user_row, user_column = Pirateship.user_guess(object)
+    computer_board = PlayBoard([[" "] * 10 for i in range(10)])
+    guess_board = PlayBoard([[" "] * 10 for i in range(10)])
+    Pirateship.ships(computer_board)
+    cannon_balls_left = 15
+    while cannon_balls_left > 0:
+        PlayBoard.print_board(guess_board)
 
-            while guess_board.board[user_row][user_column] == "~" or guess_board.board[user_row][user_column] == "X":
-                print("You have already hit that location, Try again.")
-            
+    user_row, user_column = Pirateship.user_guess(object)
+
+    while guess_board.board[user_row][user_column] == "~" or guess_board.board[user_row][user_column] == "X":
+        print("You have already hit that location, Try again.")
+
 
 welcome_message()
 username_input()
+start_game()
