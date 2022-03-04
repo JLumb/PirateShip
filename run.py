@@ -131,7 +131,11 @@ class Pirateship:
         cannon_balls_left = 15
         while cannon_balls_left > 0:
             PlayBoard.print_board(guess_board)
+            user_row, user_column = Pirateship.user_guess(object)
 
+            while guess_board.board[user_row][user_column] == "~" or guess_board.board[user_row][user_column] == "X":
+                print("You have already hit that location, Try again.")
+            
 
 welcome_message()
 username_input()
