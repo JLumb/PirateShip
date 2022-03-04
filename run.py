@@ -89,7 +89,7 @@ class Pirateship:
 
     def ships(self):
         """creating the ships for the board and checking if space taken when placing"""
-        for i in range(5):
+        for i in range(7):
             self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
             while self.board[self.x_row][self.y_column] == "X":
                 self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
@@ -122,7 +122,15 @@ class Pirateship:
                     hits += 1
         return hits
 
-    
+    def start_game(self):
+        """this function will be called to start and run the game of
+        PirateShips this includes counting turns left(cannon balls remaining)"""
+        computer_board = PlayBoard([[" "] * 10 for i in range(10)])
+        guess_board = PlayBoard([[" "] * 10 for i in range(10)])
+        Pirateship.ships(computer_board)
+        cannon_balls_left = 15
+        while cannon_balls_left > 0:
+            PlayBoard.print_board(guess_board)
 
 
 welcome_message()
