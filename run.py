@@ -74,8 +74,8 @@ class PlayBoard:
         """
         this function prints the game board out throughtout the project
         """
-        print("A B C D E F G H")
-        print("~ ~ ~ ~ ~ ~ ~ ~")
+        print("  A B C D E F G H")
+        print("  ~ ~ ~ ~ ~ ~ ~ ~")
         row_number = 1
         for row in self.board:
             print("%d|%s" % (row_number, "|".join(row)))
@@ -88,8 +88,9 @@ class Pirateship:
         self.board = board
 
     def ships(self):
-        """creating the ships for the board and checking if space taken when placing"""
-        for i in range(7):
+        """creating the ships for the board and 
+        checking if space taken when placing"""
+        for i in range(5):
             self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
             while self.board[self.x_row][self.y_column] == "X":
                 self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
@@ -120,32 +121,45 @@ class Pirateship:
             for column in row:
                 if column == "X":
                     hits += 1
+        print(f"You have hit {hits} out of 5")
         return hits
 
 
 def start_game():
     """this function will be called to start and run the game of
         PirateShips this includes counting turns left(cannon balls remaining)"""
-    computer_board = PlayBoard([[" "] * 10 for i in range(10)])
-    guess_board = PlayBoard([[" "] * 10 for i in range(10)])
+    computer_board = PlayBoard([[" "] * 8 for i in range(8)])
+    guess_board = PlayBoard([[" "] * 8 for i in range(8)])
     Pirateship.ships(computer_board)
-    cannon_balls_left = 15
+    cannon_balls_left = 25
+
     while cannon_balls_left > 0:
         PlayBoard.print_board(guess_board)
 
-    user_row, user_column = Pirateship.user_guess(object)
+        user_row, user_column = Pirateship.user_guess(object)
 
-    while guess_board.board[user_row][user_column] == "~" or guess_board.board[user_row][user_column] == "X":
-        print("You have already hit that location, Try again.")
+        while guess_board.board[user_row][user_column] == "~" or guess_board.board[user_row][user_column] == "X":
+            print("\033[1;35;48mYou have already hit that location, Try again.")
+            PlayBoard.print_board(guess_board)
+            break
 
-    if computer_board.board[user_row][user_column] == "X":
-        print("You sunk one of their ships, keep going!")
-    else:
-        print(f"That is a miss!{cannon_balls_left} cannon remaining!")
-        guess_board.board[user_row][user_column] = "~"
-    if Pirateship.hit_count == 7:
-        print("""You sunk all of their ships, take the loot and
-        escape into the high sea's CAPT'N""")
+        if computer_board.board[user_row][user_column] == "X":
+            print("\033[1;32;48mYou sunk one of their ships, keep going!")
+            guess_board.board[user_row][user_column] = "X"
+        else:
+            print("\033[1;35;48mThat is a miss!")
+            guess_board.board[user_row][user_column] = "~"
+
+        if Pirateship.hit_count == 7:
+            print("""\033[1;32;48mYou sunk all of their ships, take the loot and
+        dissappear into the high sea's CAPT'N""")
+            break
+        else:
+            cannon_balls_left -= 1
+            print(f"\033[1;35;48mBE AWARE CAP, ONLY {cannon_balls_left} CANNON BALLS LEFT.")
+        if cannon_balls_left == 0:
+            print("\033[1;35;48mOUT OF CANNON BALLS CAPT'N WE MUST RETREAT")
+            break
 
 
 welcome_message()
