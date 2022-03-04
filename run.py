@@ -122,6 +122,7 @@ class Pirateship:
                     hits += 1
         return hits
 
+
 def start_game():
     """this function will be called to start and run the game of
         PirateShips this includes counting turns left(cannon balls remaining)"""
@@ -136,6 +137,15 @@ def start_game():
 
     while guess_board.board[user_row][user_column] == "~" or guess_board.board[user_row][user_column] == "X":
         print("You have already hit that location, Try again.")
+
+    if computer_board.board[user_row][user_column] == "X":
+        print("You sunk one of their ships, keep going!")
+    else:
+        print(f"That is a miss!{cannon_balls_left} cannon remaining!")
+        guess_board.board[user_row][user_column] = "~"
+    if Pirateship.hit_count == 7:
+        print("""You sunk all of their ships, take the loot and
+        escape into the high sea's CAPT'N""")
 
 
 welcome_message()
