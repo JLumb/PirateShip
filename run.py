@@ -4,7 +4,6 @@ import random
 SEPERATOR = "\033[1;35;48m~" * 80
 
 
-
 # The opening message that a user will see when PirateShips runs
 
 
@@ -43,7 +42,7 @@ def username_input():
         if verify_username(username):
             break
     print(f"\033[1;31;48mCPT'N {username} WILL STRIKE FEAR INTO THE HEART OF THEIR FOES")
-    
+
 
 def verify_username(username):
     """
@@ -51,7 +50,7 @@ def verify_username(username):
     """
     if len(username) > 8:
         print("INVALID USER, 8 CHARACTERS MAXIMUM")
-        return False       
+        return False
     elif len(username) == 0:
         print("NO USERNAME ENTERED PLEASE RETRY")
         return False
@@ -111,8 +110,19 @@ class Pirateship:
                 y_column = input("Enter the Column:")
             return int(x_row) - 1, PlayBoard.letter_converter(self)[y_column]
         except ValueError and KeyError:
-            print("Please enter your guess")
+            print("Invalid Input")
             return self.user_guess()
+
+    def hit_count(self):
+        """function used to track how many hits a player has made"""
+        hits = 0
+        for row in self.board:
+            for column in row:
+                if column == "X":
+                    hits += 1
+        return hits
+
+    
 
 
 welcome_message()
