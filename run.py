@@ -1,6 +1,5 @@
 import random
 
-
 # Seperator creates a line break
 SEPERATOR = "\033[1;35;48m~" * 80
 
@@ -105,17 +104,6 @@ class Pirateship:
             print("Not a valid input")
             return self.user_guess()
 
-    def computers_ships(self):
-        """
-        places the AI ships
-        """
-        for ship in range(5):
-            self.x_row, self.y_column = random.randint(0, 5), random.randint(0, 5)
-            while self.board[self.x_row][self.y_column] == "X":
-                self.x_row, self.y_column = random.randint(0, 5), random.randint(0, 5)
-            self.board[self.x_row][self.y_column] = "X"
-        return self.board
-
     def players_ships(self):
         """creating the ships for the board and
         checking if space taken when placing"""
@@ -142,9 +130,7 @@ def start_game():
         run the game of PirateShips this includes
         counting turns left(cannon balls remaining)"""
     computer_board = PlayBoard([[" "] * 8 for i in range(6)])
-    computer_guess = PlayBoard([[" "] * 8 for i in range(6)])
-    player_board = PlayBoard([[" "] * 8 for i in range(6)])
-    player_guess = PlayBoard([[" "] * 8 for i in range(6)])
+    guess_board = PlayBoard([[" "] * 8 for i in range(6)])
     Pirateship.players_ships(computer_board)
     cannon_balls_left = 75
     while cannon_balls_left > 0:
