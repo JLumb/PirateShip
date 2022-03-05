@@ -88,12 +88,12 @@ class Pirateship:
         self.board = board
 
     def ships(self):
-        """creating the ships for the board and 
+        """creating the ships for the board and
         checking if space taken when placing"""
-        for i in range(5):
-            self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
+        for i in range(7):
+            self.x_row, self.y_column = random.randint(0, 5), random.randint(0, 5)
             while self.board[self.x_row][self.y_column] == "X":
-                self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
+                self.x_row, self.y_column = random.randint(0, 5), random.randint(0, 5)
             self.board[self.x_row][self.y_column] = "X"
         return self.board
 
@@ -110,7 +110,7 @@ class Pirateship:
                 print("Please enter a value from ABCDEFGH")
                 y_column = input("Enter the Column:")
             return int(x_row) - 1, PlayBoard.letter_converter(self)[y_column]
-        except ValueError and KeyError:
+        except ValueError:
             print("Not a valid input")
             return self.user_guess()
 
@@ -126,14 +126,13 @@ class Pirateship:
 
 
 def start_game():
-    """this function will be called to start and 
-        run the game of PirateShips this includes 
+    """this function will be called to start and
+        run the game of PirateShips this includes
         counting turns left(cannon balls remaining)"""
-    computer_board = PlayBoard([[" "] * 8 for i in range(8)])
-    guess_board = PlayBoard([[" "] * 8 for i in range(8)])
+    computer_board = PlayBoard([[" "] * 8 for i in range(6)])
+    guess_board = PlayBoard([[" "] * 8 for i in range(6)])
     Pirateship.ships(computer_board)
-    cannon_balls_left = 25
-
+    cannon_balls_left = 75
     while cannon_balls_left > 0:
         PlayBoard.print_board(guess_board)
 
