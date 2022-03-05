@@ -29,7 +29,7 @@ and more importantly their name will become legend\n""")
     print("\033[1;31;48mPirateShips is a turn based game vs AI:")
     print("\033[1;31;48mYou will pick a co-ordinate on the game board example: A1.")
     print("""\033[1;31;48mYou will then see a message of hit or miss,
-    on the board a x will show for hit and a ~ for miss!.""")
+on the board a x will show for hit and a ~ for miss!.""")
     print("\033[1;31;48mThe first to blow all the enemy ships out of the water wins.\n")
 
 
@@ -87,15 +87,6 @@ class Pirateship:
     def __init__(self, board):
         self.board = board
 
-    def ships(self):
-        """creating the ships for the board and
-        checking if space taken when placing"""
-        for i in range(7):
-            self.x_row, self.y_column = random.randint(0, 5), random.randint(0, 5)
-            while self.board[self.x_row][self.y_column] == "X":
-                self.x_row, self.y_column = random.randint(0, 5), random.randint(0, 5)
-            self.board[self.x_row][self.y_column] = "X"
-        return self.board
 
     def user_guess(self):
         """takes the users guess and checks to see if it is a valid input"""
@@ -114,6 +105,24 @@ class Pirateship:
             print("Not a valid input")
             return self.user_guess()
 
+
+    def computers_ships(self):
+        """
+        places the AI ships
+
+        """
+        for ship in range(5):
+
+    def players_ships(self):
+        """creating the ships for the board and
+        checking if space taken when placing"""
+        for ship in range(5):
+            self.x_row, self.y_column = random.randint(0, 5), random.randint(0, 5)
+            while self.board[self.x_row][self.y_column] == "X":
+                self.x_row, self.y_column = random.randint(0, 5), random.randint(0, 5)
+            self.board[self.x_row][self.y_column] = "X"
+        return self.board
+
     def hit_count(self):
         """counts the amount of ships hit so we can
         calculate when to game is over"""
@@ -131,7 +140,7 @@ def start_game():
         counting turns left(cannon balls remaining)"""
     computer_board = PlayBoard([[" "] * 8 for i in range(6)])
     guess_board = PlayBoard([[" "] * 8 for i in range(6)])
-    Pirateship.ships(computer_board)
+    Pirateship.players_ships(computer_board)
     cannon_balls_left = 75
     while cannon_balls_left > 0:
         PlayBoard.print_board(guess_board)
