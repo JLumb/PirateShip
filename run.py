@@ -13,24 +13,22 @@ def welcome_message():
     see when PirateShips runs
     """
     print(SEPERATOR)
-    print("\033[1;32;48mAHOY MATEY, WELCOME TO PIRATESHIPS DEFEAT YOUR ENEMIES")
+    print("\033[1;32;48mAHOY MATEY, WELCOME TO PIRATESHIP DEFEAT YOUR ENEMIES")
     print("\033[1;32;48mAND PLUNDER ALL THE TREASURES!\n")
-    print("""\033[1;31;48mThe aim of the game is to destroy the enemy fleet,
-before they destroy yours. The winner takes away endless treasure
-and more importantly their name will become legend\n""")
+    print("""\033[1;31;48mThe aim of the game is to destroy the enemy fleet""")
 
     print("\033[1;32;48mTHE HIGH SEA'S HAVE BUT A FEW RULES:\n")
     print("\033[1;31;48mRule #1: Show no mercy to the fools that challenge you!")
-    print("\033[1;31;48mRule #2: All ships must be placed on the board")
-    print("\033[1;31;48mRule #3: The first to destroy the enemy ships wins\n")
+    print("""\033[1;31;48mRule #2: Destroy all enemy ships
+before you run out of cannon balls! \n""")
     print(SEPERATOR)
 
     print("\033[1;32;48mHOW TO PLAY:\n")
-    print("\033[1;31;48mPirateShips is a turn based game vs AI:")
     print("\033[1;31;48mYou will pick a co-ordinate on the game board example: A1.")
     print("""\033[1;31;48mYou will then see a message of hit or miss,
 on the board a x will show for hit and a ~ for miss!.""")
-    print("\033[1;31;48mThe first to blow all the enemy ships out of the water wins.\n")
+    print("""\033[1;31;48mBlow up all enemy ship
+before running out of cannon balls to win.\n""")
 
 
 def username_input():
@@ -83,6 +81,7 @@ class PlayBoard:
 
 
 class Pirateship:
+
     """class to take user input and run the pirateship game functions"""
     def __init__(self, board):
         self.board = board
@@ -91,8 +90,8 @@ class Pirateship:
         """takes the users guess and checks to see if it is a valid input"""
         try:
             x_row = input("Enter the Row:")
-            while x_row not in "12345678":
-                print("Please enter number between 1 and 8")
+            while x_row not in "123456":
+                print("Please enter number between 1 and 6")
                 x_row = input("Enter the Row: ")
 
             y_column = input("Enter the Column: ").upper()
@@ -107,7 +106,7 @@ class Pirateship:
     def players_ships(self):
         """creating the ships for the board and
         checking if space taken when placing"""
-        for ship in range(5):
+        for ship in range(7):
             self.x_row, self.y_column = random.randint(0, 5), random.randint(0, 5)
             while self.board[self.x_row][self.y_column] == "X":
                 self.x_row, self.y_column = random.randint(0, 5), random.randint(0, 5)
@@ -129,6 +128,7 @@ def start_game():
     """this function will be called to start and
         run the game of PirateShips this includes
         counting turns left(cannon balls remaining)"""
+    
     computer_board = PlayBoard([[" "] * 8 for i in range(6)])
     guess_board = PlayBoard([[" "] * 8 for i in range(6)])
     Pirateship.players_ships(computer_board)
@@ -140,7 +140,7 @@ def start_game():
 
         while guess_board.board[user_row][user_column] == "~" or guess_board.board[user_row][user_column] == "X":
             print("\033[1;35;48mYou have already hit that location, Try again.")
-            PlayBoard.print_board(guess_board)
+            x_row, y_column = Pirateship.user_guess(object)
             break
 
         if computer_board.board[user_row][user_column] == "X":
@@ -150,9 +150,10 @@ def start_game():
             print("\033[1;35;48mThat is a miss!")
             guess_board.board[user_row][user_column] = "~"
 
-        if Pirateship.hit_count == 7:
-            print("""\033[1;32;48mYou sunk all of their ships, take the loot and
-        dissappear into the high sea's CAPT'N""")
+        if Pirateship.hit_count(guess_board) == 7:
+            guess_board.board[user_row][user_column] = "X"
+            print("""\033[1;32;48mThat was the last ship CAPT'N! take the loot and
+dissappear into the high sea's""")
             break
         else:
             cannon_balls_left -= 1
