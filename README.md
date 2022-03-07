@@ -17,3 +17,85 @@ The aim of the game is for the player to sink all of the enemy ships before they
 - Aim to destroy all enemy ships before running out of ammo 
 
 - You have 25 Cannon balls to use 
+
+# Features 
+
+-   The first feature the user will see is the welcome message that loads when the application starts, this section also contains the rules and the how to play section. 
+
+
+    ![welcome](assets/images/winningmessage.png) 
+
+- 	The user will then be asked to enter their name, the username is a required element and must be between 1 and 8 characters long. Not entering a username will produce an 
+    error and ask for an input. 
+
+
+    ![username](assets/images/username.png)
+
+
+- 	Once a valid username has been entered, the application will load the game board and ask the player to enter their guess as co-ordinates. 
+
+
+    ![guess](assets/images/guess.png) 
+
+
+-   The application will then check the co-ordinates against the game board and see if the player has made a hit or miss and output the result, 
+    Placing a ~ for a miss or X for a hit on the chosen co-ordinate. 
+
+
+    ![hit or miss](assets/images/hit.png) ![hit or miss](assets/images/miss.png)
+
+
+-   The player has a limited number of guesses, if they do not get all of the ships before they use all of their guesses or “cannon balls” they lose. 
+    If the player manages to hit all of the enemy ships within their limited turns they win. 
+
+
+    ![win](assets/images/winningmessage.png) ![loss](assets/images/loss.png)
+
+-   After the player wins or loses they will be asked if they would like to play again
+
+
+    ![retry](assets/images/retry.png)
+
+# Testing
+
+- I ran my code through the PEP8 Python checker and got back no critical errors.
+
+- The code was tested constantly throughout the project both in the gitpod terminal and the Heroku application.
+
+- The application was tested by myself and peers repeatedly.
+
+- There is currently one known bug with the application:
+    - When a user doesn't enter anything in the row or column input section it crashes the application.
+    - I implemented a ValueError but could not get this to work correctly.
+
+- Other validators such as CSS, HTML and JavaScript are not needed for this project.
+
+# Deploying
+
+## Project Deployment
+
+To deploy the project through Heroku I followed these steps:
+
+- Sign up / Log in to https://www.heroku.com
+- From the main Heroku Dashboard page select 'New' and then 'Create New App'
+- Give the project a name - 'pirateships' this name must be in lower case with no special characters
+- In the config vars section select the reveal config vars button. This will display the current config vars for the app.
+- In the KEY input field input PORT all in capitals, add the VALUE of 8000 then click the 'add' button.
+- Next select the add buildpack button below the config vars section.
+- In the pop-up window select Python as your first build pack and select save changes then add nodeJS, MUST be in this order.
+- Next navigate back to the deploy tab using the submenu at the top of the page.
+- In the deployment method section select the GitHub - Connect to GitHub button and follow the steps prompted if any to connect your GitHub account
+- In the Connect to GitHub section that appears, select the your account and enter the name of the repository and select search.
+- Once Heroku has located the repo select connect.
+- This will connect the repo to the app within Heroku. Below the Apps Connected to Heroku section will be the Automatic Deploys section.
+- You can then choose to automatically deploy after each push you make to GitHub or you can manually deploy each time you make a push.
+- Heroku will now build the app for you. Once it has completed the build process you will see a 'Your App Was Successfully Deployed' message and a link to the app to visit the live site.
+
+
+# Credits
+
+- Big thank you to the slack community for tips and advice throughout the project.
+
+- Knowledge mavens on youtube for the tutorial which helped guide me through creating the single player game
+
+- https://ozzmaker.com/add-colour-to-text-in-python/ for showing me how to add color to my project.
