@@ -132,7 +132,7 @@ def start_game():
     computer_board = PlayBoard([[" "] * 8 for i in range(6)])
     guess_board = PlayBoard([[" "] * 8 for i in range(6)])
     Pirateship.players_ships(computer_board)
-    cannon_balls_left = 75
+    cannon_balls_left = 25
     while cannon_balls_left > 0:
         PlayBoard.print_board(guess_board)
 
