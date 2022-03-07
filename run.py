@@ -20,7 +20,7 @@ def welcome_message():
     print("\033[1;32;48mTHE HIGH SEA'S HAVE BUT A FEW RULES:\n")
     print("\033[1;31;48mRule #1: Show no mercy to the fools that challenge you!")
     print("""\033[1;31;48mRule #2: Destroy all enemy ships
-before you run out of cannon balls! \n""")
+before you run out of cannonballs! \n""")
     print(SEPERATOR)
 
     print("\033[1;32;48mHOW TO PLAY:\n")
@@ -28,7 +28,7 @@ before you run out of cannon balls! \n""")
     print("""\033[1;31;48mYou will then see a message of hit or miss,
 on the board a x will show for hit and a ~ for miss!.""")
     print("""\033[1;31;48mBlow up all enemy ship
-before running out of cannon balls to win.\n""")
+before running out of cannonballs to win.\n""")
 
 
 def username_input():
@@ -127,7 +127,7 @@ class Pirateship:
 def start_game():
     """this function will be called to start and
         run the game of PirateShips this includes
-        counting turns left(cannon balls remaining)"""
+        counting turns left(cannonballs remaining)"""
 
     computer_board = PlayBoard([[" "] * 8 for i in range(6)])
     guess_board = PlayBoard([[" "] * 8 for i in range(6)])
@@ -157,9 +157,9 @@ dissappear into the high sea's""")
             break
         else:
             cannon_balls_left -= 1
-            print(f"\033[1;35;48mBE AWARE CAP, ONLY {cannon_balls_left} CANNON BALLS LEFT.")
+            print(f"\033[1;35;48mBE AWARE CAP, ONLY {cannon_balls_left} CANNONBALLS LEFT.")
         if cannon_balls_left == 0:
-            print("\033[1;31;48mOUT OF CANNON BALLS CAPT'N WE MUST RETREAT!!!")
+            print("\033[1;31;48mOUT OF CANNONBALLS CAPT'N WE MUST RETREAT!!!")
             break
 
 def play_again():
