@@ -128,7 +128,7 @@ def start_game():
     """this function will be called to start and
         run the game of PirateShips this includes
         counting turns left(cannon balls remaining)"""
-    
+
     computer_board = PlayBoard([[" "] * 8 for i in range(6)])
     guess_board = PlayBoard([[" "] * 8 for i in range(6)])
     Pirateship.players_ships(computer_board)
@@ -159,10 +159,32 @@ dissappear into the high sea's""")
             cannon_balls_left -= 1
             print(f"\033[1;35;48mBE AWARE CAP, ONLY {cannon_balls_left} CANNON BALLS LEFT.")
         if cannon_balls_left == 0:
-            print("\033[1;35;48mOUT OF CANNON BALLS CAPT'N WE MUST RETREAT")
+            print("\033[1;31;48mOUT OF CANNON BALLS CAPT'N WE MUST RETREAT!!!")
             break
+
+def play_again():
+
+    """
+    asks the player if they would like to play again
+    """
+    print("Give it another go CAPT'N? \n")
+    answer = input("ENTER YAY OR NEIGH: \n").upper()
+    print(' ')
+    while True:
+        if answer == "YAY":
+            print(SEPERATOR)
+            welcome_message()
+        elif answer == "NEIGH":
+            print('SEE YOU AGAIN SOON CAP')
+            print(SEPERATOR)
+            return False
+        else:
+            print(' ')
+            print('PLEASE ENTER YAY OR NEIGH')
+            answer = input('ENTER YAY OR NEIGH: \n').upper()
 
 
 welcome_message()
 username_input()
 start_game()
+play_again()
